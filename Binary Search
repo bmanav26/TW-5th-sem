@@ -2,13 +2,15 @@
 using namespace std;
 
 int binarySearch(int a[], int f, int l, int x){
-    int mid=f+(l-f)/2;
-    if(a[mid]==x)
-        return mid;
-    if(x<a[mid])
-        return binarySearch(a, f, mid-1, x);
-    if(x>a[mid])
-        return binarySearch(a, mid+1, l, x);
+    if(l<r){
+        int mid=f+(l-f)/2;
+        if(a[mid]==x)
+            return mid;
+        if(x<a[mid])
+            return binarySearch(a, f, mid-1, x);
+        if(x>a[mid])
+           return binarySearch(a, mid+1, l, x);
+    }
     return -1;
 }
 
