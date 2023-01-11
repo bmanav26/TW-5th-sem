@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void fib1(int n){ //using iteration
+    if(n<=1)
+    cout<<n<<endl;
+    else{
+        int a=0, b=1,c;
+        cout<<a<<" "<<b<<" ";
+        for(int i=2; i<=n; i++){
+            c=a+b;
+            a=b;
+            b=c;
+            cout<<c<<" ";
+        }
+        cout<<endl;
+    }
+}
+
+int fib2(int n){ //using recursion
+    if(n<=1)
+    return n;
+    return fib2(n-1)+fib2(n-2);
+}
+
+int fib3(int n, vector<int> dp){ //using dynamic programming
+    if(n<=1)
+    return dp[n]=n;
+    if(dp[n]!=-1)
+    return dp[n];
+    return dp[n]=fib3(n-1, dp) + fib3(n-2, dp);
+}
+int main(){
+    int n;
+    cout<<"Enter value of n:";
+    cin>>n;
+    int c;
+    fib1(n-1);
+    c=fib2(n-1);
+    cout<<"fib2: "<<c<<endl;
+    vector<int> dp(n,-1);
+    c=fib3(n-1, dp);
+    cout<<"fib3: "<<c<<endl;
+    return 0;
+}
